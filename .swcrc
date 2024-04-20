@@ -1,0 +1,20 @@
+{
+    "exclude": "node_modules/",
+    "jsc": {
+      "parser": {
+        "syntax": "typescript",
+        "topLevelAwait": true
+      },
+      "target": "esnext",
+      "experimental": {
+        "plugins": [
+          
+        ]
+      }
+    },
+    "module": {
+      "type": "es6",
+      "resolveFully": true
+    }
+  }
+  

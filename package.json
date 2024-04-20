@@ -1,0 +1,29 @@
+{
+  "name": "CrossmintChallenge",
+  "version": "1.0.0",
+  "description": "Challenge for Crossmint fullstack process",
+  "main": "index.js",
+  "author": "NicolasRiccomini",
+  "license": "MIT",
+  "type": "module",
+  "private": false,
+  "scripts": {
+    "ri": "rm -rf node_modules && rm -f yarn.lock && yarn install",
+    "build": "rm -rf lib && swc src --out-dir lib",
+    "currentGoal": "node lib/GoalMapRetriever",
+    "phaseOne": "node lib/Phase1/index",
+    "phaseTwo": "node lib/Phase2/index.js"
+  },
+  "dependencies": {
+    "@swc/plugin-transform-imports": "^1.5.123",
+    "@types/axios": "^0.14.0",
+    "axios": "^1.6.8",
+    "fs": "^0.0.1-security",
+    "lodash": "^4.17.21",
+    "swc": "^1.0.11",
+    "typescript": "^5.4.5"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.17.0"
+  }
+}
