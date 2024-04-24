@@ -1,39 +1,7 @@
-type AxiosError = import("axios").AxiosError
+import { updateCelestials } from "utils/updateRemote";
+import {createMap} from "./mapBuilder"
+import createHtmlMap from "utils/render";
 
-const builder = require("./mapBuilder")
-const config = require("../config")
-const axios = require("axios").default;
-
-
-const map = builder.createMap(11)
-const candidateId = '85bb9c46-0026-42cb-b6d9-e4e0331f718b'
-async function postPolyanets(){
-    const retries = []
-    await Promise.all(map.map(async(row, rowIdx) => {
-        await row.map(async(column, columnIdx) => {
-            if(column === "POLYANET"){
-            axios.post(`https://challenge.crossmint.io/api/polyanets`,{
-                candidateId: candidateId,
-                row: rowIdx,
-                column:columnIdx
-            }).then().catch((err: AxiosError) => {
-                retries.push({
-                    row: rowIdx,
-                    column:columnIdx
-                })
-
-            })
-
-        }
-        })
-        
-    }))
-    retries.map(({row, column}) => axios.post(`https://challenge.crossmint.io/api/polyanets`,{
-        candidateId: candidateId,
-        row,
-        column
-    }).then().catch((err: AxiosError) => {
-        
-
-    }))
-}
+const map = createMap(11)
+createHtmlMap(map)
+updateCelestials(map).then(res => console.log(res))

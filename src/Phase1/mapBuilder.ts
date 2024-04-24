@@ -1,4 +1,4 @@
-function createMap(sideLength: number): ("SPACE"|"POLYANET")[][] {
+export function createMap(sideLength: number): ("SPACE"|"POLYANET")[][] {
     const mapDowntownCoeffLimit = Math.floor(sideLength * 0.85)
     const map = new Array(sideLength).fill([]).map((_,heigthIdx) => {
         const row = new Array(sideLength).fill("SPACE").map((prefilledSpace,widthIdx) => {
@@ -17,5 +17,3 @@ function createMap(sideLength: number): ("SPACE"|"POLYANET")[][] {
     })
     return map
 }
-
-module.exports = {createMap}

@@ -37,9 +37,6 @@ const coordinate = (celestial: celestial) => {
     return getIcon(celestial)
 }
 
-const renderMap = (map: universe): string => {
+export const renderMap = (map: universe): string => {
     return mapWrapper(map.map((row: celestial[]) => (`<div>${row.map((elem) => (`${coordinate(elem)}`)).join("")}</div>`)).join(""))
 }
-
-
-module.exports = renderMap
